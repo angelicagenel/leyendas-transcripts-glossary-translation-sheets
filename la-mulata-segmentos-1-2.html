@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mulata de Córdoba - Segmentos 1-2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #373f45;
+            background: linear-gradient(135deg, #fdfbfb 0%, #f8f9fa 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #db6565;
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #373f45;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            color: #6b8d94;
+            font-style: italic;
+        }
+
+        .header .page-info {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #db6565;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .segment {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #ffe8e3;
+            border-left: 5px solid #db6565;
+            border-radius: 8px;
+        }
+
+        .segment-header {
+            font-size: 1.3em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .spanish-text {
+            font-size: 1.15em;
+            line-height: 2;
+            color: #373f45;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .expand-section {
+            margin-bottom: 25px;
+        }
+
+        .expand-btn {
+            background: #db6565;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-btn:hover {
+            background: #c05555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(219, 101, 101, 0.3);
+        }
+
+        .expand-btn::after {
+            content: '▼';
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .translation {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #f8ebec;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .translation.show {
+            max-height: 500px;
+            padding: 20px;
+        }
+
+        .translation p {
+            font-size: 1.05em;
+            color: #373f45;
+            line-height: 1.9;
+        }
+
+        .glossary {
+            background: #ffe8e3;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #db6565;
+        }
+
+        .glossary-title {
+            font-size: 1.1em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .glossary-item {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #db6565;
+        }
+
+        .glossary-word {
+            font-weight: 700;
+            color: #373f45;
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .glossary-def {
+            color: #6b8d94;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .spanish-text {
+                font-size: 1.05em;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .expand-btn {
+                display: none;
+            }
+
+            .translation {
+                max-height: none !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>La Mulata de Córdoba</h1>
+            <p class="subtitle">Una leyenda de Veracruz, México</p>
+            <p class="page-info">PÁGINA 1 • SEGMENTOS 1-2</p>
+        </div>
+
+        <!-- SEGMENTO 1 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 1</div>
+            
+            <div class="spanish-text">
+                <p>En la ciudad de Córdoba, Veracruz, hay una calle antigua con casas de piedra. La gente dice que una voz canta en el viento por las noches.</p>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans1')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans1">
+                    <p>In the city of Córdoba, Veracruz, there is an old street with stone houses. People say that a voice sings in the wind at night.</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">antigua</div>
+                        <div class="glossary-def">old, ancient</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">piedra</div>
+                        <div class="glossary-def">stone</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">viento</div>
+                        <div class="glossary-def">wind</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">por las noches</div>
+                        <div class="glossary-def">at night</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGMENTO 2 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 2</div>
+            
+            <div class="spanish-text">
+                <p>Ahí vive una mujer diferente. Su piel es morena, sus ojos son claros y su voz es dulce. Ella se llama La Mulata de Córdoba. La gente del pueblo la quiere, pero también tiene miedo de ella.</p>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans2')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans2">
+                    <p>There lives a different woman. Her skin is brown, her eyes are light, and her voice is sweet. She is called La Mulata de Córdoba. The people of the town love her, but they are also afraid of her.</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">piel</div>
+                        <div class="glossary-def">skin</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">morena</div>
+                        <div class="glossary-def">brown (complexion)</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">claros</div>
+                        <div class="glossary-def">light, clear</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">dulce</div>
+                        <div class="glossary-def">sweet</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">mulata</div>
+                        <div class="glossary-def">woman of mixed African and European heritage</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">miedo</div>
+                        <div class="glossary-def">fear</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTranslation(id) {
+            const translation = document.getElementById(id);
+            const btn = event.target;
+            
+            if (translation.classList.contains('show')) {
+                translation.classList.remove('show');
+                btn.classList.remove('active');
+            } else {
+                translation.classList.add('show');
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mulata de Córdoba - Segmentos 3-4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #373f45;
+            background: linear-gradient(135deg, #fdfbfb 0%, #f8f9fa 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #db6565;
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #373f45;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            color: #6b8d94;
+            font-style: italic;
+        }
+
+        .header .page-info {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #db6565;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .segment {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #ffe8e3;
+            border-left: 5px solid #db6565;
+            border-radius: 8px;
+        }
+
+        .segment-header {
+            font-size: 1.3em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .spanish-text {
+            font-size: 1.15em;
+            line-height: 2;
+            color: #373f45;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .spanish-text p {
+            margin-bottom: 15px;
+        }
+
+        .spanish-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .dialogue {
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 3px solid #db6565;
+            font-style: italic;
+        }
+
+        .expand-section {
+            margin-bottom: 25px;
+        }
+
+        .expand-btn {
+            background: #db6565;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-btn:hover {
+            background: #c05555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(219, 101, 101, 0.3);
+        }
+
+        .expand-btn::after {
+            content: '▼';
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .translation {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #f8ebec;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .translation.show {
+            max-height: 800px;
+            padding: 20px;
+        }
+
+        .translation p {
+            font-size: 1.05em;
+            color: #373f45;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .translation p:last-child {
+            margin-bottom: 0;
+        }
+
+        .glossary {
+            background: #ffe8e3;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #db6565;
+        }
+
+        .glossary-title {
+            font-size: 1.1em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .glossary-item {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #db6565;
+        }
+
+        .glossary-word {
+            font-weight: 700;
+            color: #373f45;
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .glossary-def {
+            color: #6b8d94;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .spanish-text {
+                font-size: 1.05em;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .expand-btn {
+                display: none;
+            }
+
+            .translation {
+                max-height: none !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>La Mulata de Córdoba</h1>
+            <p class="subtitle">Una leyenda de Veracruz, México</p>
+            <p class="page-info">PÁGINA 2 • SEGMENTOS 3-4</p>
+        </div>
+
+        <!-- SEGMENTO 3 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 3</div>
+            
+            <div class="spanish-text">
+                <p>Cada día está en el mercado. La Mulata vende perfumes y cura a los enfermos con plantas. Ella es inteligente y buena, pero la gente habla de ella en secreto.</p>
+                <p>Un día, el gobernador va a la plaza. Y mira a la hermosa Mulata. Él es un hombre orgulloso y con mucho poder.</p>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans3')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans3">
+                    <p>Every day she is at the market. La Mulata sells perfumes and heals the sick with plants. She is intelligent and good, but people talk about her in secret.</p>
+                    <p>One day, the governor goes to the plaza. And he looks at the beautiful Mulata. He is a proud man with a lot of power.</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">mercado</div>
+                        <div class="glossary-def">market</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">perfumes</div>
+                        <div class="glossary-def">perfumes</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">cura</div>
+                        <div class="glossary-def">heals, cures</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">enfermos</div>
+                        <div class="glossary-def">sick people</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">en secreto</div>
+                        <div class="glossary-def">in secret</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">gobernador</div>
+                        <div class="glossary-def">governor</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">plaza</div>
+                        <div class="glossary-def">town square</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">orgulloso</div>
+                        <div class="glossary-def">proud</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">poder</div>
+                        <div class="glossary-def">power</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGMENTO 4 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 4</div>
+            
+            <div class="spanish-text">
+                <p>La mira y dice:</p>
+                <div class="dialogue">—Tú eres mía. Ven conmigo.</div>
+                <p>Ella lo mira y responde:</p>
+                <div class="dialogue">—No, no soy de nadie. Yo soy libre.</div>
+                <p>El gobernador se pone furioso. Su orgullo está herido.</p>
+                <p>Entonces manda soldados y la llevan a una prisión. Acusan a la Mulata de brujería.</p>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans4')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans4">
+                    <p>He looks at her and says:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"You are mine. Come with me."</p>
+                    <p>She looks at him and responds:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"No, I belong to no one. I am free."</p>
+                    <p>The governor becomes furious. His pride is wounded.</p>
+                    <p>Then he sends soldiers and they take her to a prison. They accuse La Mulata of witchcraft.</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">mía</div>
+                        <div class="glossary-def">mine</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">ven conmigo</div>
+                        <div class="glossary-def">come with me</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">de nadie</div>
+                        <div class="glossary-def">of no one, to no one</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">libre</div>
+                        <div class="glossary-def">free</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">furioso</div>
+                        <div class="glossary-def">furious</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">orgullo</div>
+                        <div class="glossary-def">pride</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">herido</div>
+                        <div class="glossary-def">hurt, wounded</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">soldados</div>
+                        <div class="glossary-def">soldiers</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">prisión</div>
+                        <div class="glossary-def">prison</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">brujería</div>
+                        <div class="glossary-def">witchcraft</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTranslation(id) {
+            const translation = document.getElementById(id);
+            const btn = event.target;
+            
+            if (translation.classList.contains('show')) {
+                translation.classList.remove('show');
+                btn.classList.remove('active');
+            } else {
+                translation.classList.add('show');
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

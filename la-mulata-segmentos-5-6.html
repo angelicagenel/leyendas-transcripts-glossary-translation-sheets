@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mulata de Córdoba - Segmentos 5-6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #373f45;
+            background: linear-gradient(135deg, #fdfbfb 0%, #f8f9fa 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #db6565;
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #373f45;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            color: #6b8d94;
+            font-style: italic;
+        }
+
+        .header .page-info {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #db6565;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .segment {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #ffe8e3;
+            border-left: 5px solid #db6565;
+            border-radius: 8px;
+        }
+
+        .segment-header {
+            font-size: 1.3em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .spanish-text {
+            font-size: 1.15em;
+            line-height: 2;
+            color: #373f45;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .spanish-text p {
+            margin-bottom: 15px;
+        }
+
+        .spanish-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .dialogue {
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 3px solid #db6565;
+            font-style: italic;
+        }
+
+        .legendary-quote {
+            margin: 30px 0;
+            padding: 25px;
+            background: #ffe8e3;
+            border: 3px solid #db6565;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #db6565;
+            font-style: italic;
+        }
+
+        .expand-section {
+            margin-bottom: 25px;
+        }
+
+        .expand-btn {
+            background: #db6565;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-btn:hover {
+            background: #c05555;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(219, 101, 101, 0.3);
+        }
+
+        .expand-btn::after {
+            content: '▼';
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .translation {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #f8ebec;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .translation.show {
+            max-height: 1000px;
+            padding: 20px;
+        }
+
+        .translation p {
+            font-size: 1.05em;
+            color: #373f45;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .translation p:last-child {
+            margin-bottom: 0;
+        }
+
+        .glossary {
+            background: #ffe8e3;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #db6565;
+        }
+
+        .glossary-title {
+            font-size: 1.1em;
+            color: #db6565;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .glossary-item {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #db6565;
+        }
+
+        .glossary-word {
+            font-weight: 700;
+            color: #373f45;
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+
+        .glossary-def {
+            color: #6b8d94;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .spanish-text {
+                font-size: 1.05em;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legendary-quote {
+                font-size: 1.05em;
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .expand-btn {
+                display: none;
+            }
+
+            .translation {
+                max-height: none !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>La Mulata de Córdoba</h1>
+            <p class="subtitle">Una leyenda de Veracruz, México</p>
+            <p class="page-info">PÁGINA 3 • SEGMENTOS 5-6 (FINAL)</p>
+        </div>
+
+        <!-- SEGMENTO 5 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 5</div>
+            
+            <div class="spanish-text">
+                <p>Ahora La Mulata está muy sola en una celda fría. Las paredes son de piedra y solo hay una ventana pequeña.</p>
+                <p>Ella está triste, pero no está vencida.</p>
+                <p>Un día, pide un pedazo de carbón. Y en la pared dibuja un barco con velas. Es un barco muy bonito.</p>
+                <p>Esa noche, un guardia entra a la celda. Mira el dibujo y le pregunta:</p>
+                <div class="dialogue">—¿Qué haces?</div>
+                <p>Ella sonríe y dice:</p>
+                <div class="dialogue">—Espero mi libertad.</div>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans5')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans5">
+                    <p>Now La Mulata is very alone in a cold cell. The walls are made of stone and there is only a small window.</p>
+                    <p>She is sad, but she is not defeated.</p>
+                    <p>One day, she asks for a piece of charcoal. And on the wall she draws a ship with sails. It is a very beautiful ship.</p>
+                    <p>That night, a guard enters the cell. He looks at the drawing and asks her:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"What are you doing?"</p>
+                    <p>She smiles and says:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"I am waiting for my freedom."</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">sola</div>
+                        <div class="glossary-def">alone</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">celda</div>
+                        <div class="glossary-def">cell</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">fría</div>
+                        <div class="glossary-def">cold</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">paredes</div>
+                        <div class="glossary-def">walls</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">ventana</div>
+                        <div class="glossary-def">window</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">triste</div>
+                        <div class="glossary-def">sad</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">vencida</div>
+                        <div class="glossary-def">defeated</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">carbón</div>
+                        <div class="glossary-def">charcoal</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">dibuja</div>
+                        <div class="glossary-def">draws</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">barco</div>
+                        <div class="glossary-def">ship, boat</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">velas</div>
+                        <div class="glossary-def">sails</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">guardia</div>
+                        <div class="glossary-def">guard</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">sonríe</div>
+                        <div class="glossary-def">smiles</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">espero</div>
+                        <div class="glossary-def">I wait for, I hope for</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">libertad</div>
+                        <div class="glossary-def">freedom</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGMENTO 6 -->
+        <div class="segment">
+            <div class="segment-header">📍 Segmento 6 (El Final)</div>
+            
+            <div class="spanish-text">
+                <p>El guardia mira el barco y dice:</p>
+                <div class="dialogue">—Wow, es un barco hermoso. Solo le falta navegar.</div>
+                <p>Ella responde:</p>
+                <div class="dialogue">—Va a navegar.</div>
+                <p>En ese momento, el viento entra por la ventana. Y el barco se mueve. La pared se abre.</p>
+                <p>La Mulata camina hacia el barco y se sube. El guardia grita, pero ella, ella ya navega hacia el mar.</p>
+                
+                <div class="legendary-quote">
+                    "Cuando el viento sopla en Córdoba, La Mulata anda libre."
+                </div>
+            </div>
+
+            <div class="expand-section">
+                <button class="expand-btn" onclick="toggleTranslation('trans6')">
+                    English Translation
+                </button>
+                <div class="translation" id="trans6">
+                    <p>The guard looks at the ship and says:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"Wow, it's a beautiful ship. It only needs to sail."</p>
+                    <p>She responds:</p>
+                    <p style="font-style: italic; padding-left: 15px;">"It will sail."</p>
+                    <p>At that moment, the wind enters through the window. And the ship moves. The wall opens.</p>
+                    <p>La Mulata walks toward the ship and climbs aboard. The guard shouts, but she is already sailing toward the sea.</p>
+                    <p style="text-align: center; margin-top: 20px; font-style: italic; font-weight: 600;">"When the wind blows in Córdoba, La Mulata walks free."</p>
+                </div>
+            </div>
+
+            <div class="glossary">
+                <div class="glossary-title">📚 Mini-Glosario</div>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-word">hermoso</div>
+                        <div class="glossary-def">beautiful</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">le falta</div>
+                        <div class="glossary-def">it needs, it lacks</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">navegar</div>
+                        <div class="glossary-def">to sail</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">en ese momento</div>
+                        <div class="glossary-def">at that moment</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">se mueve</div>
+                        <div class="glossary-def">moves</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">se abre</div>
+                        <div class="glossary-def">opens</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">camina hacia</div>
+                        <div class="glossary-def">walks toward</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">se sube</div>
+                        <div class="glossary-def">climbs up, gets on</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">grita</div>
+                        <div class="glossary-def">shouts</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">mar</div>
+                        <div class="glossary-def">sea</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">sopla</div>
+                        <div class="glossary-def">blows</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-word">anda</div>
+                        <div class="glossary-def">walks, goes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTranslation(id) {
+            const translation = document.getElementById(id);
+            const btn = event.target;
+            
+            if (translation.classList.contains('show')) {
+                translation.classList.remove('show');
+                btn.classList.remove('active');
+            } else {
+                translation.classList.add('show');
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

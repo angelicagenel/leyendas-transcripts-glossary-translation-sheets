@@ -137,7 +137,7 @@
             body {
                 background: white;
             }
-            
+
             .container {
                 box-shadow: none;
                 padding: 20px;
@@ -152,6 +152,34 @@
             .segment-marker {
                 page-break-before: avoid;
             }
+        }
+
+        /* Footer styles */
+        .page-footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 2px solid #ffe8e3;
+            background: linear-gradient(to bottom, transparent, #fdfbfb);
+        }
+
+        .page-footer a {
+            color: #6b8d94;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: color 0.3s ease;
+        }
+
+        .page-footer a:hover {
+            color: #db6565;
+        }
+
+        .page-footer .tagline {
+            color: #9ba8af;
+            font-size: 0.9em;
+            margin-top: 8px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -221,5 +249,10 @@
             Leyenda tradicional de Córdoba, Veracruz, México
         </div>
     </div>
+
+    <footer class="page-footer">
+        <a href="https://www.spanish-learning-edge.com/" target="_blank" rel="noopener noreferrer">Spanish Learning Edge</a>
+        <p class="tagline">Discover Spanish through the culture, stories, and everyday life of Mexico</p>
+    </footer>
 </body>
 </html>
